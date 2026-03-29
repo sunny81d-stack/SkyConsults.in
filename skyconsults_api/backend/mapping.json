@@ -1,0 +1,6 @@
+{
+  "_comment": "Add code-to-URL pairs here. Keys must be strings of the numeric code.",
+  "_example": "\"1051\": \"https://realestate.skyconsults.in/some-other-page.htm\"",
+
+  "1051": "https://realestate.skyconsults.in/Godrej-Bannerghatta.htm"
+}
