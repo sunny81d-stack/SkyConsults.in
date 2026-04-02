@@ -174,22 +174,39 @@ const styles = `
     text-decoration: none;
     overflow: hidden;
     background: var(--bg-box);
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
     border-bottom: 1px solid var(--border);
     opacity: 0;
     transform: translateY(24px);
+    transition: all 0.5s ease;
+  }
+
+  .service-box::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.55);
     transition: background 0.5s ease;
+    z-index: 1;
   }
 
   .service-box:first-child {
+    background-image: url('https://images.pexels.com/photos/1457842/pexels-photo-1457842.jpeg?auto=compress&cs=tinysrgb&w=1600');
     border-right: 1px solid var(--border);
     animation: fadeUp 1s cubic-bezier(0.22, 1, 0.36, 1) 0.5s forwards;
   }
 
   .service-box:last-child {
+    background-image: url('https://images.pexels.com/photos/3707517/pexels-photo-3707517.jpeg?auto=compress&cs=tinysrgb&w=1600');
     animation: fadeUp 1s cubic-bezier(0.22, 1, 0.36, 1) 0.7s forwards;
   }
 
-  .service-box:hover { background: var(--bg-box-hover); }
+  .service-box:hover::before { background: rgba(0, 0, 0, 0.45); }
 
   .box-number {
     position: absolute;
@@ -197,8 +214,9 @@ const styles = `
     left: 3.5rem;
     font-size: 0.55rem;
     letter-spacing: 0.4em;
-    color: var(--text-faint);
+    color: rgba(255, 255, 255, 0.7);
     text-transform: uppercase;
+    z-index: 2;
   }
 
   .box-line-top {
@@ -206,9 +224,10 @@ const styles = `
     top: 0;
     left: 0;
     height: 2px;
-    background: var(--accent-line);
+    background: white;
     width: 0;
     transition: width 0.6s cubic-bezier(0.22, 1, 0.36, 1);
+    z-index: 3;
   }
 
   .service-box:hover .box-line-top { width: 100%; }
@@ -219,10 +238,10 @@ const styles = `
     font-weight: 300;
     line-height: 1;
     letter-spacing: 0.05em;
-    color: var(--text-primary);
+    color: white;
     transition: letter-spacing 0.5s ease;
     position: relative;
-    z-index: 1;
+    z-index: 2;
   }
 
   .service-box:hover .box-label { letter-spacing: 0.1em; }
@@ -232,13 +251,13 @@ const styles = `
     font-size: 0.6rem;
     letter-spacing: 0.35em;
     text-transform: uppercase;
-    color: var(--text-muted);
+    color: rgba(255, 255, 255, 0.8);
     position: relative;
-    z-index: 1;
+    z-index: 2;
     transition: color 0.4s ease;
   }
 
-  .service-box:hover .box-sub { color: var(--text-body); }
+  .service-box:hover .box-sub { color: white; }
 
   .box-arrow {
     position: absolute;
@@ -246,13 +265,14 @@ const styles = `
     right: 3.5rem;
     font-size: 0.7rem;
     letter-spacing: 0.2em;
-    color: var(--text-faint);
+    color: rgba(255, 255, 255, 0.7);
     text-transform: uppercase;
     transition: color 0.4s ease, transform 0.4s ease;
+    z-index: 2;
   }
 
   .service-box:hover .box-arrow {
-    color: var(--text-primary);
+    color: white;
     transform: translateX(6px);
   }
 
