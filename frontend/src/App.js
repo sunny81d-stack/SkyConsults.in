@@ -36,6 +36,89 @@ const styles = `
     align-items: center;
   }
 
+  /* ─── Top Bar ──────────────────────────────────────────────────────────── */
+  .top-bar {
+    width: 100%;
+    padding: 1rem 4rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid var(--border);
+    background: var(--bg-box);
+    opacity: 0;
+    transform: translateY(-16px);
+    animation: fadeDown 1s cubic-bezier(0.22, 1, 0.36, 1) 0s forwards;
+  }
+
+  .top-bar-left {
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+  }
+
+  .top-logo {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.5rem;
+    font-weight: 400;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--text-primary);
+    text-decoration: none;
+  }
+
+  .top-logo span {
+    color: var(--text-muted);
+    font-style: italic;
+    font-weight: 300;
+  }
+
+  .contact-info {
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+  }
+
+  .contact-item {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 0.65rem;
+    letter-spacing: 0.1em;
+    color: var(--text-body);
+    text-decoration: none;
+    transition: color 0.3s ease;
+  }
+
+  .contact-item:hover {
+    color: var(--text-primary);
+  }
+
+  .contact-icon {
+    font-size: 0.9rem;
+    color: var(--text-muted);
+  }
+
+  .whatsapp-btn {
+    padding: 0.6rem 1.5rem;
+    border: 1px solid var(--border);
+    background: transparent;
+    color: var(--text-body);
+    font-size: 0.6rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+
+  .whatsapp-btn:hover {
+    background: #25D366;
+    color: white;
+    border-color: #25D366;
+  }
+
   /* ─── Header ──────────────────────────────────────────────────────────── */
   .site-header {
     width: 100%;
@@ -322,6 +405,10 @@ const styles = `
 
   /* ─── Responsive ──────────────────────────────────────────────────────── */
   @media (max-width: 768px) {
+    .top-bar { padding: 1rem 2rem; flex-direction: column; gap: 1rem; align-items: flex-start; }
+    .top-bar-left { flex-direction: column; gap: 1rem; width: 100%; }
+    .contact-info { flex-direction: column; gap: 0.75rem; align-items: flex-start; width: 100%; }
+    .whatsapp-btn { width: 100%; justify-content: center; }
     .site-header { padding: 2rem; flex-direction: column; align-items: flex-start; gap: 0.5rem; }
     .hero-grid { grid-template-columns: 1fr; min-height: auto; }
     .service-box:first-child { border-right: none; border-bottom: 1px solid var(--border); }
@@ -395,6 +482,34 @@ export default function App() {
 
   return (
     <div className="site-wrapper">
+      {/* ── Top Bar with Contact ── */}
+      <div className="top-bar">
+        <div className="top-bar-left">
+          <a href="/" className="top-logo">
+            Sky<span>Consults</span>
+          </a>
+          <div className="contact-info">
+            <a href="tel:+919008827003" className="contact-item">
+              <span className="contact-icon">📞</span>
+              <span>+91 900 8827 003</span>
+            </a>
+            <a href="mailto:Invest@skyconsults.in" className="contact-item">
+              <span className="contact-icon">✉</span>
+              <span>Invest@skyconsults.in</span>
+            </a>
+          </div>
+        </div>
+        <a
+          href="https://wa.me/919008827003"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="whatsapp-btn"
+        >
+          <span>💬</span>
+          <span>WhatsApp</span>
+        </a>
+      </div>
+
       {/* ── Header ── */}
       <header className="site-header">
         <a href="/" className="logo">
